@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按需加载</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    header{
+        width: 1226px;
+        height: 80px;
+        background: #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 80px;
+    }
+    footer{
+        width: 1226px;
+        height: 80px;
+        background: #333;
+        right: 0;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 80px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+    }
+    main{
+        width: 1226px;
+        margin: 100px auto;
+        background: #00FFFF;
+    }
+    main section{
+        width: 100%;
+        height: 500px;
+        background: #8A2221;
+        margin-bottom: 30px;
+    }
+    main section img{
+        margin: 10px 20px;
+    }
+    .list{
+        position: fixed;
+        left: -50px;
+        bottom: 100px;
+        width: 50px;
+        height: 300px;
+        background: #cccccc;
+        transition: left 1s;
+    }
+    .list .foot{
+        width: 50px;
+        height: 50px;
+        background: #00FFFF;
+        font-size: 30px;
+        margin-bottom: 20px;
+        line-height: 50px;
+        text-align: center;
+        border: 1px solid #FF6700;
+        cursor: pointer;
+    }
+    .list .foot.active{
+        background: red;
+    }
+</style>
+<body>
+<div class="list">
+    <div class="foot">1</div>
+    <div class="foot">2</div>
+    <div class="foot">3</div>
+    <div class="foot">4</div>
+    <div class="foot">5</div>
+</div>
+<header>顶部</header>
+<main>
+    <section>
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1528719476.67789934!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1528092587.49664451!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1527684990.93616987!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1522034061.12391230!220x220.jpg" alt="">
+        <img  src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1527144859.25489991!220x220.jpg" alt="">
+    </section>
+    <section>
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1528719476.67789934!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1528092587.49664451!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1527684990.93616987!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1522034061.12391230!220x220.jpg" alt="">
+        <img  src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1527144859.25489991!220x220.jpg" alt="">
+    </section>
+    <section>
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1528719476.67789934!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1528092587.49664451!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1527684990.93616987!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1522034061.12391230!220x220.jpg" alt="">
+        <img  src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1527144859.25489991!220x220.jpg" alt="">
+    </section>
+    <section>
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1528719476.67789934!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1528092587.49664451!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1527684990.93616987!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1522034061.12391230!220x220.jpg" alt="">
+        <img  src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1527144859.25489991!220x220.jpg" alt="">
+    </section>
+    <section>
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1528719476.67789934!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1528092587.49664451!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1527684990.93616987!220x220.jpg" alt="">
+        <img src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1522034061.12391230!220x220.jpg" alt="">
+        <img  src="https://i1.mifile.cn/f/i/2014/cn/loading.gif" imgsrc="https://i1.mifile.cn/a1/pms_1527144859.25489991!220x220.jpg" alt="">
+    </section>
+</main>
+<footer>底部</footer>
+</body>
+</html>
+<script>
+    let bodyTop;
+    let arr=[];
+    let colorarr=["#ff0036","#EA5F8D","#0AA6E8","#64C333","#19C8A9"];
+    $("section").each((index,value)=>{
+        arr.push($(value).offset().top);
+    });
+    $(window).scroll(function () {
+        bodyTop=$(window).scrollTop();
+        // console.log(bodyTop);
+        if (bodyTop>=80) {
+            $(".list").css({"left":"50px"})
+        }else{
+            $(".list").css({"left":"-50px"})
+        }
+        $.each(arr,function (index,value) {
+                if (bodyTop+innerHeight/2>=value-80){
+                    $(".foot").eq(index).css({"background":colorarr[index]}).siblings().css({"background":"#00FFFF"});
+                    let imgs=$("section").eq(index).children("img");
+                    imgs.each((i,v)=>{
+                        let url=$(v).attr("imgsrc");
+                        $(v).attr("src",url)
+                    })
+                }
+
+        });
+    });
+  $(".foot").each(function (index,value) {
+      $(".foot").eq(index).click(function () {
+          $(this).css({"background":colorarr[index]}).siblings().css({"background":"#00FFFF"});
+          $("html").animate({scrollTop:arr[index]})
+      })
+  })
+    /*1.按需加载
+    当页面滚动到一定位置时，让当前位置的图片再进行加载
+    获取    页面滚动条的位置
+            每一个模块offsetTop--arr[i]；
+    判断 bodytop>=arr[index]满足
+    获取当前位置的所有图片--list[index].querySelector（"img"）；
+    获取每一张图片的自定义属性值，设置到src上
+    2.楼层跳转
+    点击某个楼层时，页面滚动到对应的位置
+    animate(bodytop.body,{scrollTop:arr[index]});
+    3.优化
+    当页面滚动到一定位置时，再让左侧列表和顶部搜索出现
+    改变左侧列表的选中颜色colorarr=[];
+    * */
+</script>

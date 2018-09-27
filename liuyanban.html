@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #f1f1f1;
+        padding: 50px 80px;
+    }
+
+    h3 {
+        text-align: center;
+        color: #f67a82;
+        margin-bottom: 30px;
+    }
+
+    main {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    main > section {
+        width: 60%;
+        height: 500px;
+        background: #ffffff;
+        padding: 30px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    }
+
+    main > aside {
+        width: 360px;
+        height: 458px;
+        background: #ffffff;
+        padding: 30px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    }
+
+    main > aside > input {
+        display: block;
+        margin-bottom: 40px;
+        width: 100%;
+        height: 36px;
+        padding: 6px 15px;
+        font-size: 14px;
+        line-height: 1.57142857;
+        color: #76838f;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #e4eaec;
+        border-radius: 3px;
+    }
+
+    aside > textarea {
+        display: block;
+        resize: none;
+        width: 100%;
+        height: 124px;
+        padding: 6px 15px;
+        font-size: 14px;
+        line-height: 1.57142857;
+        color: #76838f;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #e4eaec;
+        border-radius: 3px;
+    }
+
+    aside > button {
+        margin-top: 40px;
+        padding: 6px 15px;
+        font-size: 14px;
+        line-height: 1.57142857;
+        display: block;
+        width: 100%;
+        outline: none;
+        color: #fff;
+        background-color: #62a8ea;
+        border-color: #62a8ea;
+        vertical-align: middle;
+        touch-action: manipulation;
+        cursor: pointer;
+        font-family: inherit;
+        border-radius: 0;
+        white-space: normal;
+    }
+
+    .list-group {
+        padding-left: 0;
+        margin-bottom: 20px;
+        margin-top: 0;
+    }
+
+    .list-group-item:first-child {
+        border-top-color: transparent;
+    }
+
+    .list-group-item {
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+        margin-bottom: -1px;
+        background-color: #fff;
+        border: 1px solid transparent;
+    }
+
+    .list-group {
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .list-group .media {
+        padding: 2px 0;
+        border-bottom: 0;
+    }
+
+    .media, .media-body {
+        overflow: hidden;
+    }
+
+    .media-body, .media-left {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .list-group-item {
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+        margin-bottom: -1px;
+        background-color: #fff;
+        border: 1px solid transparent;
+    }
+
+    .list-group-item .media-heading {
+        font-size: 14px;
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    .pull-right {
+        padding-left: 20px;
+        float: right !important;
+    }
+
+    .media-body p {
+        font-size: 14px;
+        color: #76838f;
+        margin: 0 0 11px;
+    }
+
+    .media-left {
+        padding-right: 0;
+        height: 60px;
+        width: 60px;
+        background: #62a8ea;
+    }
+
+    .media-left > img {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<body>
+<h3>留言区</h3>
+<main>
+    <section>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="http://bpic.588ku.com/back_pic/05/56/63/585b1e450f9b8de.jpg!r850/fw/800" alt="">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <small class="pull-right">2018-01-04 16:18:53</small>
+                            张三
+                        </h4>
+                        <p>更新有些慢</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <aside>
+        <input type="text" placeholder="姓名">
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <small>最多只能输入100个字，已输入<span>0</span>个字</small>
+        <button>提交</button>
+    </aside>
+</main>
+
+<script>
+    //自动检测输入内容的长度
+    $("textarea").on("blur",function () {
+        $("span").html($("textarea").val().length);
+    });
+    $("button").click(function () {
+        if ( $("textarea").val!=="" && $("input").val!=="") {
+            let date=new Date();
+            let nian=date.getFullYear();
+            let yue=date.getMonth()+1;
+            let ri=date.getDate();
+            let shi=date.getHours();
+            let feng=date.getMinutes();
+            let miao=date.getSeconds();
+            let text1 = $("textarea").val();
+            let input1 = $("input").val();
+            let str = `<li class="list-group-item">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="http://bpic.588ku.com/back_pic/05/56/63/585b1e450f9b8de.jpg!r850/fw/800" alt="">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <small class="pull-right">${nian}-${yue}-${ri} ${shi}:${feng}:${miao}</small>
+                            ${input1}
+                        </h4>
+                        <p>${text1}</p>
+                    </div>
+                </div>
+            </li>`;
+            $("ul").append(str);
+            $("textarea").val("");
+            $("input").val("") ;
+            $("span").html("0");
+        }else {
+            alert("不能为空")
+        }
+    });
+    $("img").click(function (e) {
+        $(this).parent(".li").remove();
+    })
+</script>
+</body>
+</html>
