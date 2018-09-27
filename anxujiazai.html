@@ -147,7 +147,7 @@
   $(".foot").each(function (index,value) {
       $(".foot").eq(index).click(function () {
           $(this).css({"background":colorarr[index]}).siblings().css({"background":"#00FFFF"});
-          $("html").animate({scrollTop:arr[index]})
+          $("html").animate({scrollTop:arr[index]-80})
       })
   })
     /*1.按需加载
